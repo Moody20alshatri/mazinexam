@@ -41,9 +41,16 @@ class _MyCounterState extends State<MyCounter> {
     return Column(
       children: [
         const SizedBox(height: 20),
-        Text(
-          widget.title,
-          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 30),
+          decoration: BoxDecoration(
+            color: widget.color,
+            borderRadius: BorderRadius.all(Radius.circular(8))
+          ),
+          child: Text(
+            widget.title,
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
         ),
         Container(
           padding: const EdgeInsets.all(16.0),
@@ -74,7 +81,7 @@ class _MyCounterState extends State<MyCounter> {
               const SizedBox(width: 20),
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: Colors.teal,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child:Row(
