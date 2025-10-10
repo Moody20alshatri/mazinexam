@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('المسبحة الإلكترونية', style: TextStyle(color: Colors.white),),
           centerTitle: true,
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.teal,
           elevation: 0,
           leading: IconButton(
             icon: const Icon(Icons.menu,color: Colors.white,),
