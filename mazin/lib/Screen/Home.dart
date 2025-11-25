@@ -1,5 +1,49 @@
 import 'package:flutter/material.dart';
 
+class Rosary extends StatelessWidget {
+  const Rosary({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  Scaffold(
+        appBar: AppBar(
+          title: const Text('المسبحة الإلكترونية', style: TextStyle(color: Colors.white),),
+          centerTitle: true,
+          backgroundColor: Colors.blue,
+          elevation: 0,
+          leading: IconButton(
+            icon: const Icon(Icons.menu,color: Colors.white,),
+            onPressed: () {
+            },
+          ),
+        ),
+        body:  Column(
+          children:[
+            const SizedBox(height: 30),
+            HomeScreen(title: 'سـبـحـــان الـلــه', color: Colors.blue[50]!),
+            Container(
+              height: 1,
+              color: Colors.grey[300],
+            ),
+            const SizedBox(height: 10),
+            HomeScreen(title: 'الحــمــد لــلــه ', color: Colors.green[50]!),
+             Container(
+              height: 1,
+              color: Colors.grey[300],
+            ),
+            const SizedBox(height: 10),
+            HomeScreen(title: 'الــلــه أكــبــر', color: Colors.pink[50]!),
+             Container(
+              height: 1,
+              color: Colors.grey[300],
+            ),
+          ] 
+        ),
+      );
+  }
+}
+
+
 class HomeScreen extends StatelessWidget {
    String title = ' الـلــه';
    Color color ;
