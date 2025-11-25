@@ -13,11 +13,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _userCtrl = TextEditingController();
-  final _passCtrl = TextEditingController();
+  final _username = TextEditingController();
+  final _passowrd = TextEditingController();
 
   String? msg;
-  bool _obscure = true;
 
   Future<File> _getFile() async {
     final dir = await getApplicationDocumentsDirectory();
@@ -57,8 +56,8 @@ class _LoginPageState extends State<LoginPage> {
       return;
     }
 
-    if (_userCtrl.text.trim() == saved["username"] &&
-        _passCtrl.text.trim() == saved["password"]) {
+    if (_username.text.trim() == saved["username"] &&
+        _passowrd.text.trim() == saved["password"]) {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) =>  Rosary()),
@@ -75,8 +74,9 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("تسجيل دخول"),
-        backgroundColor: const Color(0xFF002F2C),
+        title: const Text("تسجيل دخول", style: TextStyle(color: Colors.white),),
+        backgroundColor: Colors.blue,
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(24),
@@ -84,50 +84,75 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisAlignment : MainAxisAlignment.center,
           children: [
             TextField(
-              controller: _userCtrl,
+              controller: _username,
               decoration: const InputDecoration(
-                filled: true,
                 fillColor: Colors.white,
                 hintText: "اسم المستخدم",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                  borderSide: BorderSide(
+                    color: Colors.blue,
+                    width: 2,
+                  )
+                ),
               ),
+              
             ),
             const SizedBox(height: 12),
 
             TextField(
-              controller: _passCtrl,
-              obscureText: _obscure,
+              controller: _passowrd,
               decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
+
                 hintText: "كلمة المرور",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                  borderSide: BorderSide(
+                    color: Colors.blue,
+                    width: 2,
+                  )
+                ),
                 suffixIcon: IconButton(
                   icon:
-                      Icon(_obscure ? Icons.visibility_off : Icons.visibility),
+                      Icon(Icons.password, color: Colors.blue,),
                   onPressed: () {
-                    setState(() => _obscure = !_obscure);
                   },
                 ),
               ),
             ),
 
-            if (msg != null) ...[
-              const SizedBox(height: 12),
-              Text(
-                msg!,
-                style: const TextStyle(color: Colors.white, fontSize: 16),
-              ),
-            ],
               TextButton(onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) =>  RegisterPage()),
               );
-              }, child: Text('تسجيل الدخول')),
+              }, child: Text(' إنشاء حساب', style: TextStyle(color: Colors.blue),)),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: login,
-              child: const Text("دخول"),
-            ),
+            GestureDetector(
+              onTap: login,
+                child: Center(
+                  child: Container(
+                    width: double.infinity,
+                    height: 50  ,
+                    child:  Center(child: Text(" تسجيل الدخول",style: TextStyle(color: Colors.white,fontSize: 22),)),
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.blue.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 7,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              
+            )
+              
+            
           ],
         ),
       ),
