@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:mazin/Screen/Home.dart';
+import 'package:mazin/Screen/Menu.dart';
 import 'package:mazin/Screen/Register.dart';
 import 'package:mazin/main.dart';
 import 'package:path_provider/path_provider.dart';
@@ -60,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
         _passowrd.text.trim() == saved["password"]) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) =>  Rosary()),
+        MaterialPageRoute(builder: (context) =>  Menu()),
       );
     } else {
       setState(() {
