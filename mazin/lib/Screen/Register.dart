@@ -47,7 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
       appBar: AppBar(
         title: const Text("إنشاء حساب", style: TextStyle(color: Colors.white),),
         centerTitle: true,
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.indigo,
       ),
       body: Padding(
         padding: const EdgeInsets.all(24),
@@ -65,7 +65,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                   borderSide: BorderSide(
-                    color: Colors.blue,
+                    color: Colors.indigo,
                     width: 2,
                   )
                 ),
@@ -82,7 +82,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                   borderSide: BorderSide(
-                    color: Colors.blue,
+                    color: Colors.indigo,
                     width: 2,
                   )
                 ),
@@ -120,11 +120,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     height: 50  ,
                     child:  Center(child: Text("إنشاء حساب ",style: TextStyle(color: Colors.white,fontSize: 22),)),
                     decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: Colors.indigo,
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.blue.withOpacity(0.5),
+                          color: Colors.indigo.withOpacity(0.5),
                           spreadRadius: 2,
                           blurRadius: 7,
                           offset: const Offset(0, 3),

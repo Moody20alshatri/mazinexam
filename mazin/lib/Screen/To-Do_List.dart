@@ -16,7 +16,7 @@ class _ToDoListState extends State<ToDoList> {
       appBar: AppBar(
         title: const Text('قائمة المهام', style: TextStyle(color: Colors.white),),
         centerTitle: true,
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.indigo,
         elevation: 0,
       ),
       body: Column(

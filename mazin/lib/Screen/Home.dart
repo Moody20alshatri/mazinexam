@@ -9,7 +9,7 @@ class Rosary extends StatelessWidget {
         appBar: AppBar(
           title: const Text('المسبحة الإلكترونية', style: TextStyle(color: Colors.white),),
           centerTitle: true,
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.indigo,
           elevation: 0,
           leading: IconButton(
             icon: const Icon(Icons.menu,color: Colors.white,),
@@ -20,7 +20,7 @@ class Rosary extends StatelessWidget {
         body:  Column(
           children:[
             const SizedBox(height: 30),
-            HomeScreen(title: 'سـبـحـــان الـلــه', color: Colors.blue[50]!),
+            HomeScreen(title: 'سـبـحـــان الـلــه', color: Colors.indigo[50]!),
             Container(
               height: 1,
               color: Colors.grey[300],
@@ -112,13 +112,13 @@ class _MyCounterState extends State<MyCounter> {
                 style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Colors.blue[900]),
+                    color: Colors.indigo[900]),
               ),
               
               const SizedBox(width: 20),
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: Colors.indigo,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child:Row(

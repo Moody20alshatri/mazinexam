@@ -12,8 +12,8 @@ class Push_Pages extends StatelessWidget {
         Navigator.pushNamed(context, page);
       },
       child: Container(
-        height: 100,
-        width: 100,
+        height: 150,
+        width: 150,
         decoration: BoxDecoration(
           color: Colors.blue[50],
           borderRadius: BorderRadius.circular(15),
@@ -31,15 +31,15 @@ class Push_Pages extends StatelessWidget {
             const SizedBox(height: 20),
             Icon(
               icon,
-              size: 50,
-              color: Colors.blue,
+              size: 60,
+              color: Colors.indigo,
             ),
             Text(
               title,
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Colors.blue,
+                color: Colors.indigo,
               ),
             ),
           ],

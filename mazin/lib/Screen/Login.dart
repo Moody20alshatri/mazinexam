@@ -76,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("تسجيل دخول", style: TextStyle(color: Colors.white),),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.indigo,
         centerTitle: true,
       ),
       body: Padding(
@@ -92,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                   borderSide: BorderSide(
-                    color: Colors.blue,
+                    color: Colors.indigo,
                     width: 2,
                   )
                 ),
@@ -109,13 +109,13 @@ class _LoginPageState extends State<LoginPage> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                   borderSide: BorderSide(
-                    color: Colors.blue,
+                    color: Colors.indigo,
                     width: 2,
                   )
                 ),
                 suffixIcon: IconButton(
                   icon:
-                      Icon(Icons.password, color: Colors.blue,),
+                      Icon(Icons.password, color: Colors.indigo,),
                   onPressed: () {
                   },
                 ),
@@ -127,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                 context,
                 MaterialPageRoute(builder: (context) =>  RegisterPage()),
               );
-              }, child: Text(' إنشاء حساب', style: TextStyle(color: Colors.blue),)),
+              }, child: Text(' إنشاء حساب', style: TextStyle(color: Colors.indigo),)),
             const SizedBox(height: 20),
             GestureDetector(
               onTap: login,
@@ -137,11 +137,11 @@ class _LoginPageState extends State<LoginPage> {
                     height: 50  ,
                     child:  Center(child: Text(" تسجيل الدخول",style: TextStyle(color: Colors.white,fontSize: 22),)),
                     decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: Colors.indigo,
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.blue.withOpacity(0.5),
+                          color: Colors.indigo.withOpacity(0.5),
                           spreadRadius: 2,
                           blurRadius: 7,
                           offset: const Offset(0, 3),
