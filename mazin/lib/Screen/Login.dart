@@ -1,10 +1,7 @@
-import 'dart:io';
-import 'package:mazin/Screen/Home.dart';
+import 'package:flutter/material.dart';
 import 'package:mazin/Screen/Menu.dart';
 import 'package:mazin/Screen/Register.dart';
-import 'package:mazin/main.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:flutter/material.dart';
+import 'package:mazin/helper/file.dart'; 
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -15,59 +12,26 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _username = TextEditingController();
-  final _passowrd = TextEditingController();
+  final _password = TextEditingController();
 
-  String? msg;
 
-  Future<File> _getFile() async {
-    final dir = await getApplicationDocumentsDirectory();
-    return File("${dir.path}/user.txt");
-  }
+  final userFile = UserFile(); // ← الكلاس الجديد
 
-  Future<Map<String, String>> readUserData() async {
-    final file = await _getFile();
+ login() async {
+    final data = await userFile.readUser();
 
-    if (!await file.exists()) return {};
-
-    final text = await file.readAsString();
-
-    final lines = text.split("\n");
-
-    String username = "";
-    String password = "";
-
-    for (var line in lines) {
-      if (line.startsWith("username=")) {
-        username = line.replaceFirst("username=", "").trim();
-      } else if (line.startsWith("password=")) {
-        password = line.replaceFirst("password=", "").trim();
-      }
-    }
-
-    return {"username": username, "password": password};
-  }
-
-  Future<void> login() async {
-    final saved = await readUserData();
-
-    if (saved.isEmpty) {
-      setState(() {
-        msg = "لا يوجد حساب مسجل!";
-      });
-      return;
-    }
-
-    if (_username.text.trim() == saved["username"] &&
-        _passowrd.text.trim() == saved["password"]) {
+    if(data != null){
+       if (_username.text.trim() == data["username"] &&
+        _password.text.trim() == data["password"]) 
+    {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) =>  Menu()),
+        MaterialPageRoute(builder: (context) => Menu()),
       );
-    } else {
-      setState(() {
-        msg = "اسم المستخدم أو كلمة المرور خاطئة!";
-      });
+    } 
     }
+   
+   
   }
 
   @override
@@ -75,85 +39,76 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("تسجيل دخول", style: TextStyle(color: Colors.white),),
+        title: const Text("تسجيل دخول", style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.indigo,
         centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
-        mainAxisAlignment : MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
               controller: _username,
               decoration: const InputDecoration(
-                fillColor: Colors.white,
                 hintText: "اسم المستخدم",
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
-                  borderSide: BorderSide(
-                    color: Colors.indigo,
-                    width: 2,
-                  )
                 ),
               ),
-              
             ),
+
             const SizedBox(height: 12),
 
             TextField(
-              controller: _passowrd,
-              decoration: InputDecoration(
-
+              controller: _password,
+              obscureText: true,
+              decoration: const InputDecoration(
                 hintText: "كلمة المرور",
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
-                  borderSide: BorderSide(
-                    color: Colors.indigo,
-                    width: 2,
-                  )
-                ),
-                suffixIcon: IconButton(
-                  icon:
-                      Icon(Icons.password, color: Colors.indigo,),
-                  onPressed: () {
-                  },
                 ),
               ),
             ),
 
-              TextButton(onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>  RegisterPage()),
-              );
-              }, child: Text(' إنشاء حساب', style: TextStyle(color: Colors.indigo),)),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RegisterPage()),
+                );
+              },
+              child: const Text(
+                'إنشاء حساب',
+                style: TextStyle(color: Colors.indigo),
+              ),
+            ),
+
             const SizedBox(height: 20),
+
             GestureDetector(
               onTap: login,
-                child: Center(
-                  child: Container(
-                    width: double.infinity,
-                    height: 50  ,
-                    child:  Center(child: Text(" تسجيل الدخول",style: TextStyle(color: Colors.white,fontSize: 22),)),
-                    decoration: BoxDecoration(
-                      color: Colors.indigo,
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.indigo.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 7,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
+              child: Container(
+                width: double.infinity,
+                height: 50,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.indigo,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.indigo.withOpacity(0.4),
+                      blurRadius: 6,
+                      offset: Offset(0, 3),
                     ),
-                  ),
+                  ],
                 ),
-              
-            )
-              
-            
+                child: const Text(
+                  "تسجيل الدخول",
+                  style: TextStyle(color: Colors.white, fontSize: 22),
+                ),
+              ),
+            ),
           ],
         ),
       ),
